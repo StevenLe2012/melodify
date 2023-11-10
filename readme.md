@@ -75,9 +75,7 @@ Melodify is a music streaming app that offers a comprehensive library of songs, 
   * Accessed from Home and can return to Home.
 
 ## Wireframes
-
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://i.imgur.com/PN7lguu.jpg" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
