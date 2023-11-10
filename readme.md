@@ -6,6 +6,7 @@
 2. [Product Spec](#Product-Spec)
 3. [Wireframes](#Wireframes)
 4. [Schema](#Schema)
+5. [Sprint Planning and Development](#Sprint-Planning-and-Development)
 
 ## Overview
 
@@ -95,3 +96,50 @@ Melodify is a music streaming app that offers a comprehensive library of songs, 
 - [Add list of network requests by screen]
 - [Create basic snippets for each network request]
 - [OPTIONAL: List endpoints if using an existing API such as Spotify]
+
+
+## Sprint Planning and Development
+
+### Step 1: Identify Main Features
+
+For Melodify, the main functionalities include:
+- User authentication (Login/Register)
+- Music Search and Browse
+- Music Player Interface
+- Playlist Management
+- User Profile and Settings
+
+### Step 2: Breakdown into Sprints
+
+- **Sprint 1:** Set up the project, basic UI elements, and integrate user authentication.
+- **Sprint 2:** Design and implement Music Search and Browse functionality.
+- **Sprint 3:** Build the Music Player Interface.
+- **Sprint 4:** Implement Playlist Management features.
+- **Sprint 5:** Create the User Profile and Settings screen.
+
+### Step 3: Define Weekly Goals
+
+- **Sprint 1 Goals:** Set up the project repository, design basic UI components, and implement login and registration features.
+- **Sprint 2 Goals:** Implement music search functionality, display search results, and basic browsing capabilities.
+- **Sprint 3 Goals:** Design and implement the music player interface with play, pause, skip, and volume control.
+- **Sprint 4 Goals:** Allow users to create, edit, and manage playlists.
+- **Sprint 5 Goals:** Develop user profile viewing and editing settings.
+
+### Step 4: GitHub Management
+
+- Each sprint will be a new branch in the GitHub repository.
+- Merge branches into the main codebase upon successful completion of sprint goals.
+
+### Step 5: Weekly Submissions
+
+- Weekly updates on progress will be documented in the README.
+- Include achievements, challenges faced, and plans for the next sprint.
+- Video demos will be provided as needed.
+
+### Step 6: Peer Reviews
+
+- Optional peer review of code at the end of each sprint for collaborative learning and improvement.
+
+### By the end of unit 10
+
+- Aim to have a working version of Melodify, developed incrementally through the sprints.
