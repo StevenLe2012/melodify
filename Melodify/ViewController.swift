@@ -10,17 +10,44 @@ import Nuke
 
 class ViewController: UIViewController, UITableViewDataSource {
   
-  var songs: [Song] = []
-
+  var songs: [Track] = []
+  
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
-//    view.backgroundColor = .systemPink
+    //    view.backgroundColor = .systemPink
     tableView.dataSource = self
+    fetchSongs();
   }
-
+  
+  // ADD THIS WHEN HAVE SEGUE
+  //  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  //    // Get the index path for the selected row.
+  //    // `indexPathForSelectedRow` returns an optional `indexPath`, so we'll unwrap it with a guard.
+  //    guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
+  //    
+  //    // Get the selected tumblr post from the posts array using the selected index path's row
+  //    let selectedSong = songs[selectedIndexPath.row]
+  //    
+  //    // Get access to the detail view controller via the segue's destination. (guard to unwrap the optional)
+  //    guard let detailViewController = segue.destination as? DetailViewController else { return }
+  //    
+  //    detailViewController.post = selectedSong
+  //    
+  //  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    // Customary to call the overridden method on `super` any time you override a method.
+    super.viewWillAppear(animated)
+    
+    // get the index path for the selected row
+    if let selectedIndexPath = tableView.indexPathForSelectedRow {
+      tableView.deselectRow(at: selectedIndexPath, animated: animated)
+    }
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     songs.count
   }
@@ -35,21 +62,78 @@ class ViewController: UIViewController, UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as! SongCell
     
     // Get the movie associated table view row
-    let song = songs[indexPath.row]
+    let track = songs[indexPath.row]
     
-    cell.songTitle.text = song.title
-    cell.songAuthor.text = song.author
+    cell.songTitle.text = track.name;
+    cell.songAuthor.text = track.artists.first?.name;
     
     // Configure the cell (i.e., update UI elements like labels, image views, etc.)
     
     // Unwrap the optional poster path
-    if let songCoverPath = song.photos.first {
-       
-        // Create a url by appending the poster path to the base url. https://developers.themoviedb.org/3/getting-started/images
-      let imageUrl = songCoverPath.originalSize.url
-      // Use the Nuke library's load image function to (async) fetch and load the image from the image URL.
+    if let songCoverPath = track.previewUrl {
+      
+      // Create a url by appending the poster path to the base url.
+//      let imageUrl = songCoverPath.originalSize.url
+      if let imageUrl = URL(string: songCoverPath) {
+        // Use the Nuke library's load image function to (async) fetch and load the image from the image URL.
         Nuke.loadImage(with: imageUrl, into: cell.songCover)
+      }
+    }
+    
+    return cell
+  }
+  
+  func fetchSongs() {
+    // Authentication
+    SpotifyAuthenticator.shared.getAccessToken { [weak self] token in
+      guard let token = token else {
+        print("❌ Failed to get access token")
+        return
+      }
+      
+      let headers = ["Authorization": "Bearer \(token)"]
+      let url = URL(string: "https://api.spotify.com/v1/recommendations?seed_genres=anime,j-pop,k-pop")! // CAN CHANGE TO ANY ENDPOINT
+      
+      var request = URLRequest(url: url)
+      request.httpMethod = "GET"
+      request.allHTTPHeaderFields = headers
+      
+      // Usual Requests
+      let session = URLSession.shared.dataTask(with: request) { data, response, error in
+        if let error = error {
+          print("❌ Error: \(error.localizedDescription)")
+          return
+        }
+        
+        guard let statusCode = (response as? HTTPURLResponse)?.statusCode, (200...299).contains(statusCode) else {
+          print("❌ Response error: \(String(describing: response))")
+          return
+        }
+        
+        guard let data = data else {
+          print("❌ Data is NIL")
+          return
+        }
+        
+        do {
+          let recommendation = try JSONDecoder().decode(RecommendationsResponse.self, from: data)
+          
+          DispatchQueue.main.async { [weak self] in
+            self?.songs = recommendation.tracks
+            self?.tableView.reloadData()
+            
+            print("✅ We got \(self?.songs.count ?? 0) songs!")
+            for track in recommendation.tracks {
+              print("🎤 Title: \(track.name)")
+              print("🍏 Author: \(track.artists.first?.name ?? "Unknown")")
+            }
+          }
+          
+        } catch {
+          print("❌ Error decoding JSON: \(error.localizedDescription)")
+        }
+      }
+      session.resume()
     }
   }
 }
-
