@@ -65,20 +65,20 @@ class ViewController: UIViewController, UITableViewDataSource {
     let track = songs[indexPath.row]
     
     cell.songTitle.text = track.name;
-    cell.songAuthor.text = track.artists.first?.name;
+    cell.songAuthor.text = track.artists?.first?.name;
     
     // Configure the cell (i.e., update UI elements like labels, image views, etc.)
     
     // Unwrap the optional poster path
-    if let songCoverPath = track.previewUrl {
-      
-      // Create a url by appending the poster path to the base url.
-//      let imageUrl = songCoverPath.originalSize.url
-      if let imageUrl = URL(string: songCoverPath) {
-        // Use the Nuke library's load image function to (async) fetch and load the image from the image URL.
-        Nuke.loadImage(with: imageUrl, into: cell.songCover)
-      }
-    }
+//    if let songCoverPath = track?.album {
+//
+//      // Create a url by appending the poster path to the base url.
+////      let imageUrl = songCoverPath.originalSize.url
+//      if let imageUrl = URL(string: songCoverPath) {
+//        // Use the Nuke library's load image function to (async) fetch and load the image from the image URL.
+//        Nuke.loadImage(with: imageUrl, into: cell.songCover)
+//      }
+//    }
     
     return cell
   }
@@ -119,13 +119,13 @@ class ViewController: UIViewController, UITableViewDataSource {
           let recommendation = try JSONDecoder().decode(RecommendationsResponse.self, from: data)
           
           DispatchQueue.main.async { [weak self] in
-            self?.songs = recommendation.tracks
+            self?.songs = recommendation.tracks!
             self?.tableView.reloadData()
             
             print("✅ We got \(self?.songs.count ?? 0) songs!")
-            for track in recommendation.tracks {
+            for track in recommendation.tracks! {
               print("🎤 Title: \(track.name)")
-              print("🍏 Author: \(track.artists.first?.name ?? "Unknown")")
+              print("🍏 Author: \(track.artists?.first?.name ?? "Unknown")")
             }
           }
           
