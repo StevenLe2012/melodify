@@ -8,7 +8,22 @@
 4. [Schema](#Schema)
 5. [Sprint Planning and Development](#Sprint-Planning-and-Development)
 
-## Overview
+## Week 2
+
+### Features Added
+
+
+### Video Demo
+<div>
+  <a href="//imgur.com/a/SH3A1g0">
+    <p>Melodify Week 2</p>
+  </a>
+  <a href="//imgur.com/a/SH3A1g0">
+    <img style="max-width:300px;" src="https://i.imgur.com/LlG1esE.gif">
+  </a>
+</div>
+
+## Week 1
 
 ### Description
 
