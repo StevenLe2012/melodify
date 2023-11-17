@@ -11,7 +11,8 @@
 ## Week 2
 
 ### Features Added
-
+- Spotify API fully working
+- Tableview for songs along with author and title
 
 ### Video Demo
 <div>
