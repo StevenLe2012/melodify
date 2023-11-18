@@ -22,8 +22,8 @@ struct Track: Decodable {
 struct Album: Decodable {
   let albumType: String?
   // let images: [ImageObject]?
-//  let name: String?
-//  let artists: [SimplifiedArtist]
+  //  let name: String?
+  //  let artists: [SimplifiedArtist]
   enum CodingKeys: String, CodingKey {
     case albumType = "album_type"
   }

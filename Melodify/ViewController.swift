@@ -12,6 +12,8 @@ class ViewController: UIViewController, UITableViewDataSource {
   
   var songs: [Track] = []
   
+  var likedSongs: [Track] = []
+  
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
@@ -21,22 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     tableView.dataSource = self
     fetchSongs();
   }
-  
-  // ADD THIS WHEN HAVE SEGUE
-  //  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-  //    // Get the index path for the selected row.
-  //    // `indexPathForSelectedRow` returns an optional `indexPath`, so we'll unwrap it with a guard.
-  //    guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
-  //    
-  //    // Get the selected tumblr post from the posts array using the selected index path's row
-  //    let selectedSong = songs[selectedIndexPath.row]
-  //    
-  //    // Get access to the detail view controller via the segue's destination. (guard to unwrap the optional)
-  //    guard let detailViewController = segue.destination as? DetailViewController else { return }
-  //    
-  //    detailViewController.post = selectedSong
-  //    
-  //  }
+
   
   override func viewWillAppear(_ animated: Bool) {
     // Customary to call the overridden method on `super` any time you override a method.
@@ -46,6 +33,21 @@ class ViewController: UIViewController, UITableViewDataSource {
     if let selectedIndexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: selectedIndexPath, animated: animated)
     }
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the index path for the selected row.
+    // `indexPathForSelectedRow` returns an optional `indexPath`, so we'll unwrap it with a guard.
+//    guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
+    
+    // Get the selected tumblr post from the posts array using the selected index path's row
+//    let selectedSong = songs[selectedIndexPath.row]
+    
+    // Get access to the detail view controller via the segue's destination. (guard to unwrap the optional)
+    guard let likedSongsViewController = segue.destination as? LikedSongsViewController else { return }
+    
+    likedSongsViewController.likedSongs = likedSongs;
+    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
