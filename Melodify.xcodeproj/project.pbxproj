@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B8D7D822B090A8800012042 /* LikedSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8D7D812B090A8800012042 /* LikedSongsViewController.swift */; };
+		2B8D7D842B09166900012042 /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8D7D832B09166900012042 /* MusicPlayerViewController.swift */; };
 		2BDA24232B0352B600B7C734 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA24222B0352B600B7C734 /* AppDelegate.swift */; };
 		2BDA24252B0352B600B7C734 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA24242B0352B600B7C734 /* SceneDelegate.swift */; };
 		2BDA24272B0352B600B7C734 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA24262B0352B600B7C734 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		2B8D7D812B090A8800012042 /* LikedSongsViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = LikedSongsViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
+		2B8D7D832B09166900012042 /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 		2BDA241F2B0352B600B7C734 /* Melodify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Melodify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDA24222B0352B600B7C734 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BDA24242B0352B600B7C734 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				2BDA24242B0352B600B7C734 /* SceneDelegate.swift */,
 				2BDA24262B0352B600B7C734 /* ViewController.swift */,
 				2B8D7D812B090A8800012042 /* LikedSongsViewController.swift */,
+				2B8D7D832B09166900012042 /* MusicPlayerViewController.swift */,
 				2BDA3B7B2B035C2800F5B8F1 /* SongCell.swift */,
 				2BDA3B8C2B03690700F5B8F1 /* SpotifyAuthenticator.swift */,
 				2BDA24282B0352B600B7C734 /* Main.storyboard */,
@@ -172,6 +175,7 @@
 				2BDA24232B0352B600B7C734 /* AppDelegate.swift in Sources */,
 				2BDA3B922B03728F00F5B8F1 /* RecommendationsResponse.swift in Sources */,
 				2BDA3B7C2B035C2800F5B8F1 /* SongCell.swift in Sources */,
+				2B8D7D842B09166900012042 /* MusicPlayerViewController.swift in Sources */,
 				2BDA24252B0352B600B7C734 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
