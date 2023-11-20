@@ -3,12 +3,11 @@
 ## Table of Contents
 
 1. [Week 3 - Final](#Week-3---Final)
-3. [Week 2 - Progress](#Week-2---Progress)
-4. [Week 1 - Overview](#Week-1---Overview)
-5. [Product Spec](#Product-Spec)
-6. [Wireframes](#Wireframes)
-7. [Schema](#Schema)
-8. [Sprint Planning and Development](#Sprint-Planning-and-Development)
+2. [Week 2 - Progress](#Week-2---Progress)
+3. [Week 1 - Overview](#Week-1---Overview)
+4. [Product Spec](#Product-Spec)
+5. [Wireframes](#Wireframes)
+6. [Sprint Planning and Development](#Sprint-Planning-and-Development)
 
 ## Week 3 - Final
 
