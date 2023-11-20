@@ -2,13 +2,33 @@
 
 ## Table of Contents
 
-1. [Overview](#Overview)
-2. [Product Spec](#Product-Spec)
-3. [Wireframes](#Wireframes)
-4. [Schema](#Schema)
-5. [Sprint Planning and Development](#Sprint-Planning-and-Development)
+1. [Week 3 - Final](#Week-3)
+3. [Week 2 - Progress](#Week-2)
+4. [Week 1 - Overview](#Overview)
+5. [Product Spec](#Product-Spec)
+6. [Wireframes](#Wireframes)
+7. [Schema](#Schema)
+8. [Sprint Planning and Development](#Sprint-Planning-and-Development)
 
-## Week 2
+## Week 3 - Final
+
+### Features Added
+- Music Player
+- TabView Navigation
+- Liked Songs
+
+
+### Video Demo
+<div>
+  <a href="//imgur.com/a/SH3A1g0">
+    <p>Melodify Week 2</p>
+  </a>
+  <a href="//imgur.com/a/SH3A1g0">
+    <img style="max-width:300px;" src="https://i.imgur.com/LlG1esE.gif">
+  </a>
+</div>
+
+## Week 2 - Progress
 
 ### Features Added
 - Spotify API fully working
@@ -24,7 +44,7 @@
   </a>
 </div>
 
-## Week 1
+## Week 1 - Overview
 
 ### Description
 
@@ -93,24 +113,9 @@ Melodify is a music streaming app that offers a comprehensive library of songs, 
 ## Wireframes
 <img src="https://i.imgur.com/PN7lguu.jpg" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
-
-## Schema 
-
-[This section will be completed in Unit 9]
-
-### Models
-
-[Add table of models]
-
 ### Networking
 
-- [Add list of network requests by screen]
-- [Create basic snippets for each network request]
-- [OPTIONAL: List endpoints if using an existing API such as Spotify]
-
+- Spotify API
 
 ## Sprint Planning and Development
 
