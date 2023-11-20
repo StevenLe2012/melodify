@@ -31,6 +31,8 @@ class ViewController: UIViewController, UITableViewDataSource {
     if let selectedIndexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: selectedIndexPath, animated: animated)
     }
+    
+    tableView.reloadData()
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

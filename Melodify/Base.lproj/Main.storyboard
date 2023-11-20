@@ -153,7 +153,9 @@
                         <viewLayoutGuide key="safeArea" id="2LH-Yt-VIU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Your Liked Songs" id="rqw-c8-pPo"/>
+                    <navigationItem key="navigationItem" title="Your Liked Songs" id="rqw-c8-pPo">
+                        <barButtonItem key="backBarButtonItem" title="Liked Songs" id="Tpk-QE-kQn"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Odd-dd-3Hh" id="x32-cv-eXH"/>
                     </connections>
@@ -170,29 +172,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbG-Af-dss">
-                                <rect key="frame" x="60" y="593" width="80" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbG-Af-dss">
+                                <rect key="frame" x="71" y="588" width="59" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Rewind"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="backward.end.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
                                 <connections>
                                     <action selector="rewindAction:" destination="WnR-c3-lw2" eventType="touchUpInside" id="yR8-mE-Ip0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fq9-W1-tyS">
-                                <rect key="frame" x="148" y="593" width="96" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fq9-W1-tyS">
+                                <rect key="frame" x="167" y="584" width="59" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Play/Stop"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="pause.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
                                 <connections>
                                     <action selector="playStopAction:" destination="WnR-c3-lw2" eventType="touchUpInside" id="ciO-bi-Due"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5f-F7-b9D">
-                                <rect key="frame" x="252" y="593" width="87" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5f-F7-b9D">
+                                <rect key="frame" x="267" y="588" width="59" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Forward"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="forward.end.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
                                 <connections>
                                     <action selector="forwardAction:" destination="WnR-c3-lw2" eventType="touchUpInside" id="7b5-IA-CkK"/>
                                 </connections>
@@ -215,6 +227,20 @@
                                 <rect key="frame" x="83" y="210" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMW-eY-oQf">
+                                <rect key="frame" x="161" y="699" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="heart" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="69"/>
+                                </state>
+                                <state key="selected" image="heart.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="likedButtonAction:" destination="WnR-c3-lw2" eventType="touchUpInside" id="bei-ex-uoS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cAt-It-tmA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -224,6 +250,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="forwardButton" destination="a5f-F7-b9D" id="LjY-8a-ufL"/>
+                        <outlet property="likedButton" destination="vMW-eY-oQf" id="W8L-IH-82l"/>
                         <outlet property="playStopButtom" destination="fq9-W1-tyS" id="twC-do-ISP"/>
                         <outlet property="rewindButton" destination="nbG-Af-dss" id="ygO-YM-Vle"/>
                         <outlet property="songAuthor" destination="nxN-oq-Up0" id="IeW-2D-jBZ"/>
@@ -297,9 +324,12 @@
         <segue reference="ybr-gg-Gof"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="backward.end.fill" catalog="system" width="128" height="101"/>
+        <image name="forward.end.fill" catalog="system" width="128" height="101"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="music.note" catalog="system" width="96" height="128"/>
+        <image name="pause.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

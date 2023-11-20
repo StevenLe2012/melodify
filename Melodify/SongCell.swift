@@ -81,7 +81,7 @@ class SongCell: UITableViewCell {
     }
     
     if let author = track.artists?.first?.name {
-      songTitle.text = author;
+      songAuthor.text = author;
     }
     
     likeButton.layer.cornerRadius = likeButton.frame.width / 2

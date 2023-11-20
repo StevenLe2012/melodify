@@ -118,16 +118,28 @@ extension Track {
   // 4. If 2-3 are successful, return the array of movies
   // 5. Otherwise, return an empty array
   static func getTracks(forKey key: String) -> [Track] {
-    // 1.
+//    // 1.
+//    let defaults = UserDefaults.standard
+//    // 2.
+//    if let data = defaults.data(forKey: key) {
+//      // 3.
+//      let decodedTracks = try! JSONDecoder().decode([Track].self, from: data)
+//      // 4.
+//      return decodedTracks
+//    } else {
+//      // 5.
+//      return []
+//    }
     let defaults = UserDefaults.standard
-    // 2.
     if let data = defaults.data(forKey: key) {
-      // 3.
-      let decodedTracks = try! JSONDecoder().decode([Track].self, from: data)
-      // 4.
-      return decodedTracks
+      do {
+        let decodedTracks = try JSONDecoder().decode([Track].self, from: data)
+        return decodedTracks
+      } catch {
+        print("Error decoding tracks: \(error)")
+        return []
+      }
     } else {
-      // 5.
       return []
     }
   }
@@ -139,13 +151,25 @@ extension Track {
   //   - Since this method is available on "instances" of a track, we can reference the movie this method is being called on using `self`.
   // 3. Save the updated favorite tracks array
   func addToFavorites() {
-    // 1.
-    var favoriteTracks = Track.getTracks(forKey: Track.favoritesKey)
-    // 2.
-    print("added " + (self.name ?? "NO NAME") + " to favs")
-    favoriteTracks.append(self)
-    // 3.
-    Track.save(favoriteTracks, forKey: Track.favoritesKey)
+//    // 1.
+//    print("BeginningofAddtoFavs")
+//    var favoriteTracks = Track.getTracks(forKey: Track.favoritesKey)
+//    // 2.
+//    print("added " + (self.name ?? "NO NAME") + " to favs")
+//    favoriteTracks.append(self)
+//    // 3.
+//    Track.save(favoriteTracks, forKey: Track.favoritesKey)
+    DispatchQueue.main.async {
+      var favoriteTracks = Track.getTracks(forKey: Track.favoritesKey)
+      print("added \(self.name ?? "NO NAME") to favs")
+      favoriteTracks.append(self)
+      do {
+        let encodedData = try JSONEncoder().encode(favoriteTracks)
+        UserDefaults.standard.set(encodedData, forKey: Track.favoritesKey)
+      } catch {
+        print("Error encoding tracks: \(error)")
+      }
+    }
   }
   
   // Removes the movie from the favorites array in UserDefaults
