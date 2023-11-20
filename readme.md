@@ -4,7 +4,7 @@
 
 1. [Week 3 - Final](#Week-3)
 3. [Week 2 - Progress](#Week-2)
-4. [Week 1 - Overview](#Overview)
+4. [Week 1 - Overview](#Week-1---Overview)
 5. [Product Spec](#Product-Spec)
 6. [Wireframes](#Wireframes)
 7. [Schema](#Schema)
