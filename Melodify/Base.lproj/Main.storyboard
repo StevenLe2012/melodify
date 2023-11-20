@@ -260,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfF-vu-UL5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3727.480916030534" y="718.30985915492965"/>
+            <point key="canvasLocation" x="3036" y="703"/>
         </scene>
         <!--For You-->
         <scene sceneID="bTP-rN-mLg">
@@ -321,7 +321,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ybr-gg-Gof"/>
+        <segue reference="U4I-66-Tsr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="backward.end.fill" catalog="system" width="128" height="101"/>
