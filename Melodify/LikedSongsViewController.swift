@@ -8,7 +8,7 @@
 import UIKit
 
 class LikedSongsViewController: UIViewController, UITableViewDataSource {
-    
+
     var likedSongs: [Track] = [];
     
     @IBOutlet weak var tableView: UITableView!
@@ -25,15 +25,22 @@ class LikedSongsViewController: UIViewController, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the index path for the selected row.
         // `indexPathForSelectedRow` returns an optional `indexPath`, so we'll unwrap it with a guard.
-        //    guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
         
-        // Get the selected tumblr post from the posts array using the selected index path's row
-        //    let selectedSong = songs[selectedIndexPath.row]
+        // Get the selected songs post from the posts array using the selected index path's row
+        let selectedSong = likedSongs[selectedIndexPath.row]
         
         // Get access to the detail view controller via the segue's destination. (guard to unwrap the optional)
-        guard let forYouViewController = segue.destination as? ViewController else { return }
+        //        if let forYouViewController = segue.destination as? ViewController {
+        //
+        //        }
         
-        forYouViewController.likedSongs = likedSongs;
+        //        forYouViewController.likedSongs = likedSongs;
+        
+        // PREPARE MUSIC PLAYER VIEW CONTROLLER
+        if let musicPlayerViewController = segue.destination as? MusicPlayerViewController {
+            musicPlayerViewController.currentSong = selectedSong
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,8 +59,7 @@ class LikedSongsViewController: UIViewController, UITableViewDataSource {
         // Get the movie associated table view row
         let track = likedSongs[indexPath.row]
         
-        cell.songTitle.text = track.name;
-        cell.songAuthor.text = track.artists?.first?.name;
+        cell.configure(with: track);
         
         // Configure the cell (i.e., update UI elements like labels, image views, etc.)
         

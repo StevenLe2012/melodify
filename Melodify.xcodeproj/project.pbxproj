@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		2B8D7D812B090A8800012042 /* LikedSongsViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = LikedSongsViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
-		2B8D7D832B09166900012042 /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
+		2B8D7D832B09166900012042 /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		2BDA241F2B0352B600B7C734 /* Melodify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Melodify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDA24222B0352B600B7C734 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BDA24242B0352B600B7C734 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };

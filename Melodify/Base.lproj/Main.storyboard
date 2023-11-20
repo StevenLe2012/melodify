@@ -61,12 +61,28 @@
                                                     <rect key="frame" x="0.0" y="-5" width="53" height="53"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPp-IX-feg">
+                                                    <rect key="frame" x="317" y="0.0" width="44" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="heart" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
+                                                    </state>
+                                                    <state key="selected" image="heart.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="didTapLikeButton:" destination="5wA-dP-BfH" eventType="touchUpInside" id="Xyl-Wk-odt"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="likeButton" destination="OPp-IX-feg" id="kqe-cs-MGt"/>
                                             <outlet property="songAuthor" destination="iiC-fh-oH5" id="8xK-eL-2xs"/>
                                             <outlet property="songCover" destination="oZN-yX-JuG" id="ZiM-Oh-G8H"/>
                                             <outlet property="songTitle" destination="TLR-JZ-k55" id="A6Y-jD-Px6"/>
+                                            <segue destination="WnR-c3-lw2" kind="show" id="U4I-66-Tsr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -128,6 +144,7 @@
                                             <outlet property="songAuthor" destination="UU8-NA-pTs" id="dGB-sL-G9P"/>
                                             <outlet property="songCover" destination="Hv1-sZ-vOX" id="wWO-Js-7wM"/>
                                             <outlet property="songTitle" destination="4qK-qc-A4I" id="Nwn-Hn-NON"/>
+                                            <segue destination="WnR-c3-lw2" kind="show" id="fjj-lk-Yvg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -152,50 +169,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMG-0E-nZB">
-                                <rect key="frame" x="71" y="59" width="250" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxN-oq-Up0">
-                                <rect key="frame" x="175" y="137" width="59" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Eb-wD-i1r">
-                                <rect key="frame" x="84" y="185" width="240" height="240"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbG-Af-dss">
                                 <rect key="frame" x="60" y="593" width="80" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Rewind"/>
+                                <connections>
+                                    <action selector="rewindAction:" destination="WnR-c3-lw2" eventType="touchUpInside" id="yR8-mE-Ip0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fq9-W1-tyS">
                                 <rect key="frame" x="148" y="593" width="96" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Play/Stop"/>
+                                <connections>
+                                    <action selector="playStopAction:" destination="WnR-c3-lw2" eventType="touchUpInside" id="ciO-bi-Due"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5f-F7-b9D">
                                 <rect key="frame" x="252" y="593" width="87" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Forward"/>
+                                <connections>
+                                    <action selector="forwardAction:" destination="WnR-c3-lw2" eventType="touchUpInside" id="7b5-IA-CkK"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMG-0E-nZB">
+                                <rect key="frame" x="70" y="84" width="250" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="nxN-oq-Up0">
+                                <rect key="frame" x="174" y="150" width="59" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Eb-wD-i1r">
+                                <rect key="frame" x="83" y="210" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cAt-It-tmA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Music Player" id="V1H-nZ-SxS">
+                        <barButtonItem key="backBarButtonItem" title="Songs" id="5Zo-sI-l5n"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="forwardButton" destination="a5f-F7-b9D" id="LjY-8a-ufL"/>
+                        <outlet property="playStopButtom" destination="fq9-W1-tyS" id="twC-do-ISP"/>
+                        <outlet property="rewindButton" destination="nbG-Af-dss" id="ygO-YM-Vle"/>
+                        <outlet property="songAuthor" destination="nxN-oq-Up0" id="IeW-2D-jBZ"/>
+                        <outlet property="songCover" destination="8Eb-wD-i1r" id="beM-gN-11z"/>
+                        <outlet property="songName" destination="QMG-0E-nZB" id="HSd-0k-X62"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfF-vu-UL5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1403.8167938931297" y="664.78873239436621"/>
+            <point key="canvasLocation" x="1409.9236641221373" y="710.56338028169023"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bTP-rN-mLg">
@@ -216,9 +253,17 @@
             <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="U4I-66-Tsr"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
