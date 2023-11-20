@@ -13,13 +13,25 @@ class LikedSongsViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Get favorite songs and display in table view
+        // 1. Get the array of favorite songs
+        // 2. Set the favoriteSongs property so the table view data source methods will have access to latest favorite songs.
+        // 3. Reload the table view
+        // ------
+        //1.
+        let songs = Track.getTracks(forKey: Track.favoritesKey)
+        // 2.
+        self.likedSongs = songs
+        // 3.
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,7 +70,8 @@ class LikedSongsViewController: UIViewController, UITableViewDataSource {
         
         // Get the movie associated table view row
         let track = likedSongs[indexPath.row]
-        
+        cell.track = track;
+        print(cell.track.name)
         cell.configure(with: track);
         
         // Configure the cell (i.e., update UI elements like labels, image views, etc.)

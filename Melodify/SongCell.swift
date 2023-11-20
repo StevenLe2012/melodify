@@ -37,7 +37,6 @@ class SongCell: UITableViewCell {
 
   }
   
-  
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
@@ -77,8 +76,13 @@ class SongCell: UITableViewCell {
   
   // Update the UI for the given track
   private func update(with track: Track) {
-    songTitle.text = track.name
-    songAuthor.text = track.artists?.first?.name;
+    if let name = track.name {
+      songTitle.text = name;
+    }
+    
+    if let author = track.artists?.first?.name {
+      songTitle.text = author;
+    }
     
     likeButton.layer.cornerRadius = likeButton.frame.width / 2
     
