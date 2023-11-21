@@ -19,6 +19,12 @@ class ViewController: UIViewController, UITableViewDataSource {
     // Do any additional setup after loading the view.
     //    view.backgroundColor = .systemPink
     tableView.dataSource = self
+    
+    // Tableview Refresh
+    let refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    tableView.refreshControl = refreshControl
+    
     fetchSongs();
   }
 
@@ -43,11 +49,6 @@ class ViewController: UIViewController, UITableViewDataSource {
     // Get the selected songs post from the posts array using the selected index path's row
     let selectedSong = songs[selectedIndexPath.row]
     
-    // PREPARE LIKED SONG VIEW CONTROLLER
-    // Get access to the detail view controller via the segue's destination. (guard to unwrap the optional)
-//    if let likedSongsViewController = segue.destination as? LikedSongsViewController {
-//      likedSongsViewController.likedSongs = likedSongs
-//    }
     // PREPARE MUSIC PLAYER VIEW CONTROLLER
     if let musicPlayerViewController = segue.destination as? MusicPlayerViewController {
       musicPlayerViewController.currentSong = selectedSong
@@ -74,23 +75,18 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     cell.configure(with: track);
     
-//    cell.songTitle.text = track.name;
-//    cell.songAuthor.text = track.artists?.first?.name;
-    
-    // Configure the cell (i.e., update UI elements like labels, image views, etc.)
-    
-    // Unwrap the optional poster path
-//    if let songCoverPath = track?.album {
-//
-//      // Create a url by appending the poster path to the base url.
-////      let imageUrl = songCoverPath.originalSize.url
-//      if let imageUrl = URL(string: songCoverPath) {
-//        // Use the Nuke library's load image function to (async) fetch and load the image from the image URL.
-//        Nuke.loadImage(with: imageUrl, into: cell.songCover)
-//      }
-//    }
-    
     return cell
+  }
+  
+  @objc func refreshData(_ sender: UIRefreshControl) {
+    // Fetch new data here (e.g., make a network request or reload data from another source)
+    
+    // After fetching new data, reload the table view
+    fetchSongs();
+    tableView.reloadData()
+    
+    // Stop the refresh animation
+    sender.endRefreshing()
   }
   
   func fetchSongs() {

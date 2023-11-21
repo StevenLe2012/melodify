@@ -28,13 +28,12 @@ class MusicPlayerViewController: UIViewController {
     
     @IBAction func playStopAction(_ sender: Any) {
         isPlaying.toggle()
-        print("PressedButton")
     }
     
     @IBAction func forwardAction(_ sender: Any) {
         
     }
-    
+
     @IBAction func likedButtonAction(_ sender: UIButton) {
         // Set the button's isSelected state to the opposite of it's current value.
         sender.isSelected = !sender.isSelected
@@ -43,7 +42,6 @@ class MusicPlayerViewController: UIViewController {
         // 2. Otherwise, the button is in the *un-selected* state (i.e."un-favorited") -> Remove track from favorites
         if sender.isSelected {
             // 1.
-            print("currentSong: " + (currentSong.name ?? "EMPTY"))
             currentSong.addToFavorites()
         } else {
             // 2.
@@ -55,9 +53,8 @@ class MusicPlayerViewController: UIViewController {
         didSet {
             let imageName = isPlaying ? "pause.circle.fill" : "play.circle.fill"
             print(imageName)
-            let image = UIImage(systemName: imageName)?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)
+            let image = UIImage(systemName: imageName)
             playStopButtom.setImage(image, for: .normal)
-            print("DidSet")
         }
     }
     
@@ -69,12 +66,18 @@ class MusicPlayerViewController: UIViewController {
     }
     
     func configure() {
-//        if let photo = post.photos.first {
-//            let url = photo.originalSize.url
-//            Nuke.loadImage(with: url, into: posterImageView)
-//        }
         songName.text = currentSong?.name;
         songAuthor.text = currentSong?.artists?.first?.name;
+        
+        //   Unwrap the optional poster path
+        if let songCoverPath = currentSong.album?.images?.first?.url {
+            
+            if let imageUrl = URL(string: songCoverPath) {
+                // Use the Nuke library's load image function to (async) fetch and load the image from the image URL.
+                Nuke.loadImage(with: imageUrl, into: songCover)
+            }
+        }
+        
         likedButton.layer.cornerRadius = likedButton.frame.width / 2
         // 1.
         let favorites = Track.getTracks(forKey: Track.favoritesKey)
@@ -87,15 +90,4 @@ class MusicPlayerViewController: UIViewController {
             likedButton.isSelected = false
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

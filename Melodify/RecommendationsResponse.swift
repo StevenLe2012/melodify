@@ -33,15 +33,18 @@ struct Track: Codable, Equatable {
   let name: String?
   let previewUrl: String?
 }
-
 struct Album: Codable {
   let albumType: String?
-  // let images: [ImageObject]?
-  //  let name: String?
-  //  let artists: [SimplifiedArtist]
+  let images: [ImageObject]?
   enum CodingKeys: String, CodingKey {
     case albumType = "album_type"
+    case images = "images"
   }
+}
+struct ImageObject: Codable {
+  let url: String?
+  let height: Int?
+  let width: Int?
 }
 struct Restrictions: Codable {
   let reason: String?
@@ -63,11 +66,6 @@ struct Artist: Codable {
 }
 struct Followers: Codable {
   let total: Int?
-}
-struct ImageObject: Codable {
-  let url: String
-  let height: Int?
-  let width: Int?
 }
 struct ExternalUrls: Codable {
   let spotify: String?
@@ -118,18 +116,6 @@ extension Track {
   // 4. If 2-3 are successful, return the array of movies
   // 5. Otherwise, return an empty array
   static func getTracks(forKey key: String) -> [Track] {
-//    // 1.
-//    let defaults = UserDefaults.standard
-//    // 2.
-//    if let data = defaults.data(forKey: key) {
-//      // 3.
-//      let decodedTracks = try! JSONDecoder().decode([Track].self, from: data)
-//      // 4.
-//      return decodedTracks
-//    } else {
-//      // 5.
-//      return []
-//    }
     let defaults = UserDefaults.standard
     if let data = defaults.data(forKey: key) {
       do {

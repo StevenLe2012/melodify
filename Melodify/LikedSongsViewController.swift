@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Nuke
 
 class LikedSongsViewController: UIViewController, UITableViewDataSource {
 
@@ -18,6 +19,11 @@ class LikedSongsViewController: UIViewController, UITableViewDataSource {
 
         // Do any additional setup after loading the view.
         tableView.dataSource = self
+        
+        // Tableview Refresh
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,13 +56,6 @@ class LikedSongsViewController: UIViewController, UITableViewDataSource {
         // Get the selected songs post from the posts array using the selected index path's row
         let selectedSong = likedSongs[selectedIndexPath.row]
         
-        // Get access to the detail view controller via the segue's destination. (guard to unwrap the optional)
-        //        if let forYouViewController = segue.destination as? ViewController {
-        //
-        //        }
-        
-        //        forYouViewController.likedSongs = likedSongs;
-        
         // PREPARE MUSIC PLAYER VIEW CONTROLLER
         if let musicPlayerViewController = segue.destination as? MusicPlayerViewController {
             musicPlayerViewController.currentSong = selectedSong
@@ -81,31 +80,18 @@ class LikedSongsViewController: UIViewController, UITableViewDataSource {
         cell.track = track;
         cell.configure(with: track);
         
-        // Configure the cell (i.e., update UI elements like labels, image views, etc.)
-        
-        // Unwrap the optional poster path
-        //    if let songCoverPath = track?.album {
-        //
-        //      // Create a url by appending the poster path to the base url.
-        ////      let imageUrl = songCoverPath.originalSize.url
-        //      if let imageUrl = URL(string: songCoverPath) {
-        //        // Use the Nuke library's load image function to (async) fetch and load the image from the image URL.
-        //        Nuke.loadImage(with: imageUrl, into: cell.songCover)
-        //      }
-        //    }
-        
         return cell
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func refreshData(_ sender: UIRefreshControl) {
+        // Fetch new data here (e.g., make a network request or reload data from another source)
+        
+        // After fetching new data, reload the table view
+        let songs = Track.getTracks(forKey: Track.favoritesKey)
+        self.likedSongs = songs
+        tableView.reloadData()
+        
+        // Stop the refresh animation
+        sender.endRefreshing()
     }
-    */
-
 }

@@ -6,12 +6,9 @@
 //
 
 import UIKit
+import Nuke
 
 class SongCell: UITableViewCell {
-  
-  // The closure called, passing in the associated track, when the "like" button is tapped.
-  var onFavoriteButtonTapped: ((Track) -> Void)?
-  
   // The track associated with the cell
   var track: Track!
 
@@ -40,15 +37,12 @@ class SongCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
-    // Set the button's corner radius to be 1/2  it's width. This will make a square button round
-//    likeButton.layer.cornerRadius = likeButton.frame.width / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
 
     // Configure the view for the selected state
-      
     }
   
   
@@ -61,18 +55,6 @@ class SongCell: UITableViewCell {
     // 2.
     update(with: track);
   }
-//  // Initial configuration of the task cell
-//  // 1. Set the main task property
-//  // 2. Set the onCompleteButtonTapped closure
-//  // 3. Update the UI for the given task
-//  func configure(with track: Track, onFavoriteButtonTapped: ((Track) -> Void)?) {
-//    // 1.
-//    self.track = track
-//    // 2.
-//    self.onFavoriteButtonTapped = onFavoriteButtonTapped
-//    // 3.
-//    update(with: track);
-//  }
   
   // Update the UI for the given track
   private func update(with track: Track) {
@@ -82,6 +64,15 @@ class SongCell: UITableViewCell {
     
     if let author = track.artists?.first?.name {
       songAuthor.text = author;
+    }
+    
+    //   Unwrap the optional poster path
+    if let songCoverPath = track.album?.images?.first?.url {
+
+      if let imageUrl = URL(string: songCoverPath) {
+        // Use the Nuke library's load image function to (async) fetch and load the image from the image URL.
+        Nuke.loadImage(with: imageUrl, into: songCover)
+      }
     }
     
     likeButton.layer.cornerRadius = likeButton.frame.width / 2
@@ -97,11 +88,4 @@ class SongCell: UITableViewCell {
       likeButton.isSelected = false
     }
   }
-  
-  
-  
-//  // This overrides the table view cell's default selected and highlighted behavior to do nothing, otherwise, the row would darken when tapped
-//  // This is just a design / UI polish for this particular use case. Since we also have the "Completed" button in the row, it looks kinda weird if the whole cell darkens during selection.
-//  override func setSelected(_ selected: Bool, animated: Bool) { }
-//  override func setHighlighted(_ highlighted: Bool, animated: Bool) { }
 }
