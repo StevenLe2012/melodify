@@ -19,13 +19,14 @@
 
 ### Video Demo
 <div>
-  <a href="//imgur.com/a/SH3A1g0">
-    <p>Melodify Week 2</p>
+  <a href="//imgur.com/a/bbeE3zR">
+    <p>Melodify Week 3 Final Demo 11/20/2023</p>
   </a>
-  <a href="//imgur.com/a/SH3A1g0">
-    <img style="max-width:300px;" src="https://i.imgur.com/LlG1esE.gif">
+  <a href="//imgur.com/a/bbeE3zR">
+    <img style="max-width:300px;" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2ptcHV5djV3eXg3bGMxY2dnMTY0dXh0Nnp4NG5xMDByaWY3bmJhdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JAT8le6LklZAQWBLxG/giphy.gif">
   </a>
 </div>
+
 
 ## Week 2 - Progress
 
@@ -42,6 +43,7 @@
     <img style="max-width:300px;" src="https://i.imgur.com/LlG1esE.gif">
   </a>
 </div>
+
 
 ## Week 1 - Overview
 
